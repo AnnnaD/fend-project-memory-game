@@ -8,6 +8,60 @@ $(function() {
 let cards = document.querySelectorAll('.card');
 const desk = document.querySelector('.deck');
 
+
+let moves = document.querySelector('.moves');
+moves.textContent = 0;
+let num_moves = moves.textContent;
+num_moves = Number(num_moves);
+
+function play_again() {
+  const congrats_box = document.querySelector('.wrapper_congrats_box').style.display = "none";
+  const container = document.querySelector('.container').style.display = "flex";
+  let cards = document.querySelectorAll('.card');
+  card.classList.remove('open','match','show');
+}
+
+function create_summary() {
+
+  const body = document.querySelector('body');
+  const container = document.querySelector('.container').style.display = "none";
+  const wrapper = document.createElement('div');
+  wrapper.setAttribute('class','wrapper_congrats_box')
+  wrapper.style.cssText = 'width:100%; height:100%; display: flex; justify-content:center; align-items:center; flex-direction:column; text-align:center';
+  const icon_box = document.createElement('div');
+  icon_box.setAttribute('class','icon_box_wrapper');
+  const icon = document.createElement('i');
+  icon.setAttribute('class','fa fa-check');
+  const congrats = document.createElement('h1');
+  congrats.textContent = "Congratulations! You Won!";
+  const summary_points = document.createElement('p');
+  const btn_play_again = document.createElement('button');
+  btn_play_again.setAttribute('class','button_play_again');
+  btn_play_again.textContent = "play again";
+  summary_points.textContent = "With just " + num_moves + " moves and some stars"
+  summary_points.style.color ='green';
+  wrapper.appendChild(icon_box);
+  icon_box.appendChild(icon);
+  wrapper.appendChild(congrats)
+  wrapper.appendChild(btn_play_again);
+  congrats.appendChild(summary_points);
+  body.appendChild(wrapper);
+  btn_play_again.addEventListener('click',play_again);
+}
+
+function winning_game() {
+  const matched_card = document.querySelectorAll('.match');
+  if(matched_card.length === 16){
+    create_summary()
+    console.log("end_of_game");
+  }
+}
+
+function count_moves() {
+    num_moves = num_moves + 1;
+    moves.textContent = num_moves;
+}
+
 function anim_incorrect_match() {
   let card_open_incorrect = document.querySelectorAll('.incorrect');
   card_open_incorrect[0].classList.remove('show','incorrect');
@@ -47,6 +101,8 @@ function open_cards() {
   let how_many_open = card_open.length;
   if(how_many_open > 1) {
     check_match();
+    count_moves();
+    winning_game();
   }
 }
 
