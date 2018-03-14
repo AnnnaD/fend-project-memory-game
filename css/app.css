@@ -81,6 +81,23 @@ h1 {
     font-size: 33px;
 }
 
+.deck .card.incorrect {
+  animation-name: jump;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes jump {
+  0% {
+    background-color: red;
+    transform: translateX(20px);
+  }
+  100% {
+    background-color: none;
+    transform: translateX(0);
+  }
+}
+
 /*
  * Styles for the Score Panel
  */
