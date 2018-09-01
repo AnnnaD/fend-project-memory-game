@@ -31,7 +31,7 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    color: #efa073;
+    color: #499DAF;
 }
 
 /*
@@ -55,7 +55,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #d37e8d;
+    background: #DB8372;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -168,7 +168,8 @@ h1 {
   display: none;
 }
 
-.button_play_again {
+.button_play_again,
+.button_stop {
   width: 15%;
   border-radius: 4px 4px 4px 4px;
   padding: 20px;
@@ -177,8 +178,18 @@ h1 {
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 1px solid pink;
   cursor: pointer;
+}
+.button_stop {
+  width: 50%;
+}
+
+.button_stop:hover,
+.button_play_again:hover {
+  color: white;
+  font-weight: 500;
+  background-color: #F4C95D;
+  border: 2px solid #499DAF;
 }
 
 p {
@@ -206,5 +217,54 @@ p {
   }
   100% {
     transform: rotate(360deg)scale(2);
+  }
+}
+
+/*
+ * Styles for the timer
+ */
+
+.timer_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.timer_inputs_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  margin-top: 20px;
+  background:  linear-gradient(to right, rgba(73,156,175,1) 0%, rgba(244,201,93,1) 100%);
+}
+
+.minutes,
+.seconds {
+  font-size: 28px;
+  margin: 10px;
+  color: white;
+}
+
+@media (min-width:200px) and (max-width:650px) {
+  .deck {
+    max-width: 344px;
+    min-height: 352px;
+  }
+  .deck .card {
+    width: 58px;
+    height: 58px;
+  }
+  .button_play_again {
+    width: 80%;
+  }
+  .score-panel {
+    width: 60%;
+  }
+  .timer_inputs_wrapper {
+    padding: 10px;
   }
 }
